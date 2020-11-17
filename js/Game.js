@@ -3,6 +3,12 @@
  * Game.js */
 
  class Game{
+
+    constructor () {
+        this.phrase = phrase;
+
+
+    }
     phrases = [
         {phrase : 'Life is like a box of chocolate'},
         {phrase : 'There is no trying'},
@@ -22,15 +28,11 @@
          const overLay = document.getElementById('overlay');
          overLay.style.display = "none";
          this.activePhrase = this.getRandomPhrase();
-         this.activePhrase.addPhraseToDisplay;
-
-         
-    
+         var phrase = new Phrase(this.activePhrase.phrase);
+        phrase.addPhraseToDisplay();
      }
 
-    constructor(){
-    
-    }
+   
   
     
 
