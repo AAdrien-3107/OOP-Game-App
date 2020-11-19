@@ -29,9 +29,22 @@
        
         return splitLetter ;
     
-    }
+	}
+	checkLetter(letter){        
+		return this.phrase.includes(letter) 
+	}
+
+	showMatchedLetter(letter){
+		const li = document.querySelectorAll('li.hide.letter')
+		li.forEach(phrase => {
+		if(letter === phrase.textContent.toLowerCase()){
+			phrase.classList.replace("hide", "show") }}) 
+	} 
+}
+		
     
- }
+
+ 
 
  
 

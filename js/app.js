@@ -19,9 +19,19 @@ game.getRandomPhrase();
 //console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
 let game = '';
+const button = document.getElementById('btn__reset');
+const buttonKey = document.getElementsByClassName("key");
+const mainScreen = document.getElementById('overlay');
 
-document.getElementById(`btn__reset`).addEventListener("click", function(){
+
+button.addEventListener('click', function(){
+
     
-		game = new Game();
-		game.startGame() ; 
-});
+    game = new Game()
+    game.startGame()  
+})
+
+for(let button of buttonKey){
+    button.addEventListener('click', function(){	    
+    game.handleInteraction(button) }	)};
+    	
