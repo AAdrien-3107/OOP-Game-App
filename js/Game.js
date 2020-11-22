@@ -95,7 +95,7 @@ class Game {
       this.resetGame();
     } else if (this.missedGuess < 5) {
       h1.innerHTML = `Congratulations, You won! The quote was
-           <br><p class= "end-quote">"${activePhrase.toUpperCase()}"</p>`; //changed from game to this, removed phrase
+           <br><p class= "end-quote">"${this.activePhrase.toUpperCase()}"</p>`; //changed from game to this, removed phrase
       button.innerHTML = "Play again";
       mainScreen.className = "win";
       this.resetGame();
