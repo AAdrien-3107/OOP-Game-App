@@ -6,17 +6,17 @@
 
 class Game {
     
-    phrases = [
-        { phrase: "Life is like a box of chocolate" },
-        { phrase: "There is no trying" },
-        { phrase: "May the force be with you" },
-        { phrase: "You have to see the matrix for yourself" },
-        { phrase: "You talking to me" },
-      ];
+    
 
     constructor() {
-    this.phrase = phrase;
-    this.missedGuess = 0;
+    this.phrases = [
+      { phrase: "Life is like a box of chocolate" },
+      { phrase: "There is no trying" },
+      { phrase: "May the force be with you" },
+      { phrase: "You have to see the matrix for yourself" },
+      { phrase: "You talking to me" },
+    ];
+    this.missed = 0;
     this.activePhrase = null;
   }
   
@@ -75,10 +75,10 @@ class Game {
   //Methode removes imges for each missedGuess.
   removeLife() {
     let li = document.querySelectorAll("#scoreboard img");
-    this.missedGuess++;
-    if (this.missedGuess < 5) {
-      li[5 - this.missedGuess].src = "images/lostHeart.png";
-    } else if (this.missedGuess === 5) {
+    this.missed++;
+    if (this.missed < 5) {
+      li[5 - this.missed].src = "images/lostHeart.png";
+    } else if (this.missed === 5) {
       this.gameOver();
     }
   }
@@ -88,12 +88,12 @@ class Game {
     const mainScreen = document.getElementById("overlay");
     mainScreen.style.display = "inherit";
     const h1 = document.getElementById("game-over-message");
-    if (this.missedGuess === 5) {
+    if (this.missed === 5) {
       h1.innerHTML = `Sorry, you lost! Better luck next time.`;
       button.innerHTML = "Try again";
-      mainScreen.className = "loss";
+      mainScreen.className = "lose";
       this.resetGame();
-    } else if (this.missedGuess < 5) {
+    } else if (this.missed < 5) {
       h1.innerHTML = `Congratulations, You won! The quote was
            <br><p class= "end-quote">"${this.activePhrase.toUpperCase()}"</p>`; //changed from game to this, removed phrase
       button.innerHTML = "Play again";
