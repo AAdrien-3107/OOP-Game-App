@@ -1,29 +1,36 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
- * Game.js */
+ * js */
+
+
 
 class Game {
-  constructor() {
+    
+    phrases = [
+        { phrase: "Life is like a box of chocolate" },
+        { phrase: "There is no trying" },
+        { phrase: "May the force be with you" },
+        { phrase: "You have to see the matrix for yourself" },
+        { phrase: "You talking to me" },
+      ];
+
+    constructor() {
     this.phrase = phrase;
     this.missedGuess = 0;
     this.activePhrase = null;
   }
-  phrases = [
-    { phrase: "Life is like a box of chocolate" },
-    { phrase: "There is no trying" },
-    { phrase: "May the force be with you" },
-    { phrase: "You have to see the matrix for yourself" },
-    { phrase: "You talking to me" },
-  ];
+  
 
-  // Need to make randomQuote return the string of the prop.!!!
+  /* Method generate a random number and assign it to one of the class in my obj 
+  and returns only the value of the prop phrase. */
   getRandomPhrase() {
     let randomQuote = Math.floor(Math.random() * 5);
-    //console.log(game.phrases[randomQuote].phrase);
-    return game.phrases[randomQuote].phrase; //game.phrases[randomQuote].phrase;
+    //console.log(phrases[randomQuote].phrase);
+    console.log(this.hi);
+    return this.phrases[randomQuote].phrase;
   }
 
-  //This methode generate a phrase from the getRandomPhrase() and displays it on the sceen.
+  // This methode generate a phrase from the getRandomPhrase() and displays it on the sceen.
   startGame() {
     const overLay = document.getElementById("overlay");
     overLay.style.display = "none";
@@ -33,8 +40,8 @@ class Game {
     phrase.addPhraseToDisplay();
   }
 
-  //This methode checkes the input with each char on the phrase then shows on the UI the matched and unmatched char
-  //and check is the game is over by wining or no more life.
+  /* This methode checkes the input with each char on the phrase then shows on the UI the matched and unmatched char
+  and check is the game is over by wining or no more life. */
   handleInteraction(buttonKey) {
     let phrase = new Phrase(this.activePhrase);
     phrase.activePhrase = phrase;
@@ -43,12 +50,12 @@ class Game {
       if (phrase.checkLetter(buttonKey.innerHTML)) {
         buttonKey.className = "chosen";
         phrase.showMatchedLetter(buttonKey.innerHTML);
-        if (game.checkForWin()) {
-          game.gameOver();
+        if (this.checkForWin()) {
+          this.gameOver();
         }
       } else {
         buttonKey.className = "wrong";
-        game.removeLife();
+        this.removeLife();
       }
     }
   }
@@ -85,13 +92,13 @@ class Game {
       h1.innerHTML = `Sorry, you lost! Better luck next time.`;
       button.innerHTML = "Try again";
       mainScreen.className = "loss";
-      game.resetGame();
+      this.resetGame();
     } else if (this.missedGuess < 5) {
       h1.innerHTML = `Congratulations, You won! The quote was
-           <br><p class= "end-quote">"${game.activePhrase.toUpperCase()}"</p>`; //changed from game to this, removed phrase
+           <br><p class= "end-quote">"${activePhrase.toUpperCase()}"</p>`; //changed from game to this, removed phrase
       button.innerHTML = "Play again";
       mainScreen.className = "win";
-      game.resetGame();
+      this.resetGame();
     }
   }
 
@@ -117,15 +124,7 @@ class Game {
       for (let x = 0; x < list.length; x++) {
         ul.removeChild(list[x]);
       }
-      /*let game = new Game();
-      //game.activePhrase = game.getRandomPhrase();
-      console.log(game.getRandomPhrase());
-      let phrase = new Phrase(game.getRandomPhrase());
-      phrase.addPhraseToDisplay();
-      game.activePhrase = phrase;*/
-      console.log("called");
       
-      //game.startGame();
-    //});
+      console.log("called");
   }
 }

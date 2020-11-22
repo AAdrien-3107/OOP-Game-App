@@ -60,25 +60,6 @@ p.end-quote {
   letter-spacing: 4px;
 }
 
-#player-name{
-  max-width: 25%;
-  align-self: center;
-  text-align: center;
-  color: #9370DB;
-  font-size: 17px;
-  margin-top: 10px;
-  outline: none;
-  border: 1px solid #9370DB;
-}
-
-#player-name:focus{
-  background-color: #9370DB;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  outline: none;
-  border: 1px solid white;
-}
 
 button {
   margin: 6px;

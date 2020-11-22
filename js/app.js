@@ -2,11 +2,13 @@
  * Project 4 - OOP Game App
  * app.js */
 
-{
-let game = "";
 const button = document.getElementById("btn__reset");
 const buttonKey = document.getElementsByClassName("key");
 const mainScreen = document.getElementById("overlay");
+
+{// Scope the global variable for security.
+let game = "";
+
 
 button.addEventListener("click", function () {
   game = new Game();

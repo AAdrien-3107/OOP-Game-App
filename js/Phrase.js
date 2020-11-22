@@ -29,7 +29,7 @@ class Phrase {
 
     return splitLetter;
   }
-  
+
   checkLetter(letter) {
     return this.phrase.includes(letter);
   }
