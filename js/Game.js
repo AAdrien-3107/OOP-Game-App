@@ -80,6 +80,7 @@ class Game {
       li[5 - this.missed].src = "images/lostHeart.png";
     } else if (this.missed === 5) {
       this.gameOver();
+      
     }
   }
 
