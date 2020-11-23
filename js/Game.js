@@ -10,11 +10,11 @@ class Game {
 
     constructor() {
     this.phrases = [
-      { phrase: "Life is like a box of chocolate" },
-      { phrase: "There is no trying" },
-      { phrase: "May the force be with you" },
-      { phrase: "You have to see the matrix for yourself" },
-      { phrase: "You talking to me" },
+      "Life is like a box of chocolate",
+      "There is no trying",
+      "May the force be with you",
+      "You have to see the matrix for yourself",
+      "You talking to me",
     ];
     this.missed = 0;
     this.activePhrase = null;
@@ -24,27 +24,28 @@ class Game {
   /* Method generate a random number and assign it to one of the class in my obj 
   and returns only the value of the prop phrase. */
   getRandomPhrase() {
-    let randomQuote = Math.floor(Math.random() * 5);
+    let randomQuote = Math.floor(Math.random() * this.phrases.length);
     //console.log(phrases[randomQuote].phrase);
-    console.log(this.hi);
-    return this.phrases[randomQuote].phrase;
+    console.log(this.phrases[randomQuote]);
+    let randomPhrase = this.phrases[randomQuote];
+    return randomPhrase;
   }
 
   // This methode generate a phrase from the getRandomPhrase() and displays it on the sceen.
   startGame() {
     const overLay = document.getElementById("overlay");
     overLay.style.display = "none";
-    this.activePhrase = this.getRandomPhrase();
-    let phrase = new Phrase(this.activePhrase);
-    console.log(phrase);
-    phrase.addPhraseToDisplay();
-  }
-
+    this.activePhrase = new Phrase(this.getRandomPhrase());
+    this.activePhrase.addPhraseToDisplay();
+    return this.activePhrase;
+    
+    }
+  
   /* This methode checkes the input with each char on the phrase then shows on the UI the matched and unmatched char
   and check is the game is over by wining or no more life. */
   handleInteraction(buttonKey) {
-    let phrase = new Phrase(this.activePhrase);
-    phrase.activePhrase = phrase;
+    const phrase = this.activePhrase;
+
     if (buttonKey) {
       buttonKey.disabled = true;
       if (phrase.checkLetter(buttonKey.innerHTML)) {
@@ -88,6 +89,7 @@ class Game {
   gameOver() {
     const mainScreen = document.getElementById("overlay");
     mainScreen.style.display = "inherit";
+  
     const h1 = document.getElementById("game-over-message");
     if (this.missed === 5) {
       h1.innerHTML = `Sorry, you lost! Better luck next time.`;
@@ -96,7 +98,7 @@ class Game {
       this.resetGame();
     } else if (this.missed < 5) {
       h1.innerHTML = `Congratulations, You won! The quote was
-           <br><p class= "end-quote">"${this.activePhrase.toUpperCase()}"</p>`; //changed from game to this, removed phrase
+           <br><p class= "end-quote">"${this.activePhrase.phrase.toUpperCase()}"</p>`;
       button.innerHTML = "Play again";
       mainScreen.className = "win";
       this.resetGame();
@@ -129,3 +131,4 @@ class Game {
       console.log("called");
   }
 }
+
